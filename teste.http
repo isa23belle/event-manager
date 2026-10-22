@@ -1,0 +1,48 @@
+### Teste 1: sem capacity (deve dar 400)
+POST http://localhost:3000/events
+Content-Type: application/json
+
+{
+  "title": "Palestra",
+  "date": "2026-12-01"
+}
+
+### Teste 2: evento valido com capacidade 2 (deve dar 201)
+POST http://localhost:3000/events
+Content-Type: application/json
+
+{
+  "title": "Palestra",
+  "date": "2026-12-01",
+  "capacity": 2
+}
+
+### Teste 3: primeiro participante (deve dar 201)
+POST http://localhost:3000/events/1/register
+Content-Type: application/json
+
+{
+  "participantName": "Ana",
+  "email": "ana@email.com"
+}
+
+### Teste 4: segundo participante (deve dar 201)
+POST http://localhost:3000/events/1/register
+Content-Type: application/json
+
+{
+  "participantName": "Bruno",
+  "email": "bruno@email.com"
+}
+
+### Teste 5: terceiro participante (deve dar 403, lotado)
+POST http://localhost:3000/events/1/register
+Content-Type: application/json
+
+{
+  "participantName": "Carla",
+  "email": "carla@email.com"
+}
+
+### Teste 6: listar eventos (deve mostrar registrationsCount: 2)
+GET http://localhost:3000/events
