@@ -1,11 +1,6 @@
-const express = require('express');
 const sequelize = require('./database');
 require('./models');
-const eventRoutes = require('./eventRoutes');
-
-const app = express();
-app.use(express.json());
-app.use(eventRoutes);
+const app = require('./app');
 
 const PORT = 3000;
 
